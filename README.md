@@ -2,6 +2,8 @@
 
 A demo project built with [Avalonia UI](https://avaloniaui.net/) - a cross-platform .NET UI framework.
 
+This project uses [EMX Controls](https://eremexcontrols.net) - a set of high-performance UI components for Avalonia.
+
 ## Getting Started
 
 ### Prerequisites
