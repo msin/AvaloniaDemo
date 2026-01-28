@@ -23,7 +23,7 @@
     </Application.Resources>
 
     <Application.Styles>
-        <FluentTheme />
+        <!--<FluentTheme />-->
         <theme:DeltaDesignTheme />
 
         <Style Selector="Window">
@@ -56,20 +56,7 @@
             <Setter Property="BorderThickness" Value="0" />
         </Style>
 
-    <!-- Скругление TextEditor -->
-        <Style Selector="mxe|TextEditor:light /template/ Border#PART_RootBorder">
-            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
-        </Style>
-
-        <Style Selector="mxe|TextEditor /template/ TextBox#PART_RealEditor">
-            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
-        </Style>
-
-        <Style Selector="mxe|TextEditor /template/ TextBox:focus /template/ Border#PART_BorderElement">
-            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
-        </Style>
-
-        <Style Selector="mxr|RibbonPage mxb|ToolbarEditorItem mxe|TextEditor /template/ Border#PART_RootBorder">
+        <Style Selector="mxe|TextEditor:activeMode, mxe|ComboBoxEditor:activeMode, mxe|SpinEditor:activeMode, mxe|DateEditor:activeMode, mxe|CheckEditor:activeMode">
             <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
         </Style>
     </Application.Styles>

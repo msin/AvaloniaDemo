@@ -31,19 +31,73 @@
                            CommandLayout="Classic">
             <mxr:RibbonPage Header="Home">
                 <mxr:RibbonPageGroup Header="Item Filter" IsHeaderButtonVisible="False">
-                    <mxb:ToolbarEditorItem Header="Артикул" EditorValue="{Binding Art, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <mxb:ToolbarEditorItem Header="Артикул" EditorValue="{Binding Art}">
                         <mxb:ToolbarEditorItem.EditorProperties>
                             <mxe:TextEditorProperties />
                         </mxb:ToolbarEditorItem.EditorProperties>
                     </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Название" EditorValue="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <mxb:ToolbarEditorItem Header="Название" EditorValue="{Binding Name}">
                         <mxb:ToolbarEditorItem.EditorProperties>
                             <mxe:TextEditorProperties />
                         </mxb:ToolbarEditorItem.EditorProperties>
                     </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Описание" EditorValue="{Binding Descr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <mxb:ToolbarEditorItem Header="Описание" EditorValue="{Binding Descr}">
                         <mxb:ToolbarEditorItem.EditorProperties>
                             <mxe:TextEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    
+                    <mxb:ToolbarSeparatorItem />
+                    
+                    <mxb:ToolbarEditorItem Header="Класс">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:ComboBoxEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Группа">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:ComboBoxEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Тип">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:ComboBoxEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                                        
+                    <mxb:ToolbarSeparatorItem />
+                    
+                    <mxb:ToolbarEditorItem Header="Дата 1">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:DateEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Дата 2">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:DateEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Дата 3">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:DateEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                                                            
+                    <mxb:ToolbarSeparatorItem />
+                    
+                    <mxb:ToolbarEditorItem Header="Число 1">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Число 2">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Число 3">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties />
                         </mxb:ToolbarEditorItem.EditorProperties>
                     </mxb:ToolbarEditorItem>
                 </mxr:RibbonPageGroup>
