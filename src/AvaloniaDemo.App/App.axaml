@@ -2,16 +2,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:theme="clr-namespace:Eremex.AvaloniaUI.Themes.DeltaDesign;assembly=Eremex.Avalonia.Themes.DeltaDesign"
              x:Class="AvaloniaDemo.App.App"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:local="using:AvaloniaDemo.App"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
              RequestedThemeVariant="Light">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!--
+     "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. 
+    https://github.com/Eremex/controlthemes/blob/main/Source/Eremex.Avalonia.Themes.DeltaDesign/Controls/Editors/EditorsCommonStyles.axaml
+-->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
+
+    <!--<Application.Resources>
+        <CornerRadius x:Key="EditorCornerRadius">2</CornerRadius>
+    </Application.Resources>-->
 
     <Application.Styles>
         <FluentTheme />
         <theme:DeltaDesignTheme />
+
+        <Style Selector="Window">
+            <Setter Property="WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+        </Style>
+
+        <Style Selector="mxdg|DataGridControl">
+            <Setter Property="BorderBrush" Value="DimGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="SearchPanelDisplayMode" Value="HotKey" />
+            <Setter Property="NavigationMode" Value="Row" />
+            <Setter Property="ShowGroupPanel" Value="False" />
+        </Style>
+
+        <Style Selector="mxb|ToolbarEditorItem">
+            <Setter Property="Alignment" Value="Far" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="HeaderContentHorizontalAlignment" Value="Right" />
+            <Setter Property="EditorWidth" Value="120" />
+            <Setter Property="EditorAlignment" Value="Right" />
+            <Setter Property="CornerRadius" Value="2" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <!-- Скругление TextEditor -->
+        <!--<Style Selector="mxe|TextEditor:light /template/ Border#PART_RootBorder">
+            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        </Style>
+
+        <Style Selector="mxe|TextEditor /template/ TextBox#PART_RealEditor">
+            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        </Style>
+
+        <Style Selector="mxe|TextEditor /template/ TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        </Style>
+
+        <Style Selector="mxr|RibbonPage mxb|ToolbarEditorItem mxe|TextEditor /template/ Border#PART_RootBorder">
+            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        </Style>-->
     </Application.Styles>
 </Application>

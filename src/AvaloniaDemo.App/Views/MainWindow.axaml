@@ -1,28 +1,85 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:AvaloniaDemo.App.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
-        xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
-        xmlns:views="using:AvaloniaDemo.App.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaDemo.App.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="AvaloniaDemo - EMX Controls">
+<mx:MxWindow xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:AvaloniaDemo.App.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:views="using:AvaloniaDemo.App.Views"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+             x:Class="AvaloniaDemo.App.Views.MainWindow"
+             x:DataType="vm:MainWindowViewModel"
+             Icon="/Assets/LS12.png"
+             Width="1280" Height="800" Padding="5"
+             Title="AvaloniaDemo - EMX Controls">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <mxdg:DataGridControl AutoGenerateColumns="False"
-                          ItemsSource="{Binding Employees}"
-                          ColumnsSource="{Binding ColumnDefinitions}"
-                          SearchPanelDisplayMode="Always">
-        <mxdg:DataGridControl.ColumnTemplate>
-            <views:ColumnTemplate/>
-        </mxdg:DataGridControl.ColumnTemplate>
-    </mxdg:DataGridControl>
+    <DockPanel>
+        <mxr:RibbonControl DockPanel.Dock="Top"
+                           ApplicationButtonGlyph="/Assets/avalonia-logo.ico"
+                           ApplicationButtonKeyTip="F"
+                           IsQuickAccessToolbarVisible="False"
+                           AllowQuickAccessToolbarCustomizationMenu="False"
+                           IsQuickAccessToolbarCustomizationButtonVisible="False"
+                           IsApplicationButtonVisible="False"
+                           CommandLayout="Classic">
+            <mxr:RibbonPage Header="Home">
+                <mxr:RibbonPageGroup Header="Item Filter" IsHeaderButtonVisible="False">
+                    <mxb:ToolbarEditorItem Header="Артикул" EditorValue="{Binding Art, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:TextEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Название" EditorValue="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:TextEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Header="Описание" EditorValue="{Binding Descr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:TextEditorProperties />
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                </mxr:RibbonPageGroup>
+            </mxr:RibbonPage>
+        </mxr:RibbonControl>
 
-</Window>
+        <mxdg:DataGridControl ItemsSource="{Binding Rows}"
+                              ColumnsSource="{Binding Cols}"
+                              FilterString="{Binding FilterString}"
+                              FilterPanelDisplayMode="Auto"
+                              IsFilterEnabled="True">
+            <Interaction.Behaviors>
+                <EventTriggerBehavior EventName="DoubleTapped">
+                    <InvokeCommandAction Command="{Binding EditCommand}" 
+                                         CommandParameter="{Binding $parent[mxdg:DataGridControl].FocusedItem}" />
+                </EventTriggerBehavior>
+            </Interaction.Behaviors>
+            <mxdg:DataGridControl.ColumnTemplate>
+                <views:ColumnTemplate />
+            </mxdg:DataGridControl.ColumnTemplate>
+        </mxdg:DataGridControl>
+    </DockPanel>
+</mx:MxWindow>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

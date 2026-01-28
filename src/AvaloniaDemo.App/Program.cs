@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using System.Text;
 
 namespace AvaloniaDemo.App;
 
@@ -11,7 +12,8 @@ sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        LicenseProvider.RegisterLicense();
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }
 

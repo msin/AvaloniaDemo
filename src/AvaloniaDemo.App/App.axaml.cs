@@ -44,4 +44,14 @@ public partial class App : Application
             BindingPlugins.DataValidators.Remove(plugin);
         }
     }
+
+    private void LogStyles()
+    {
+        System.Diagnostics.Debug.WriteLine("         === Зарегистрированные стили ===");
+        
+        foreach (var style in Styles)
+        {
+            System.Diagnostics.Debug.WriteLine($"Стиль: {style}");
+        }
+    }
 }

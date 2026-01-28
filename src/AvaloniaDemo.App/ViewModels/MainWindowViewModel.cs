@@ -1,92 +1,88 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using AvaloniaDemo.App.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+using AvaloniaDemo.App.ViewModels.Entities;
+using AvaloniaDemo.CIL.Common;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AvaloniaDemo.App.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private IList<EmployeeInfo> employees;
+    [ObservableProperty] private TItem[] _rows = [];
+    [ObservableProperty] private ColumnDef[] _cols = [];
 
-    [ObservableProperty]
-    private IList<ColumnDefinition> columnDefinitions;
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(FilterString))]
+    private string _art = string.Empty;
+
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(FilterString))]
+    private string _name = string.Empty;
+
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(FilterString))]
+    private string _descr = string.Empty;
+
+    [ObservableProperty] private string _filterString = string.Empty;
 
     public MainWindowViewModel()
     {
-        ColumnDefinitions = new List<ColumnDefinition>
-        {
-            new ColumnDefinition("Id", "ID", ColumnType.Integer),
-            new ColumnDefinition("FirstName", "First Name", ColumnType.String),
-            new ColumnDefinition("LastName", "Last Name", ColumnType.String),
-            new ColumnDefinition("BirthDate", "Birth Date", ColumnType.Date),
-            new ColumnDefinition("Department", "Department", ColumnType.ComboBox)
-        };
-
-        Employees = new List<EmployeeInfo>
-        {
-            new EmployeeInfo(1, "Alex", "Smith", new DateTime(1990, 1, 1), "Engineering"),
-            new EmployeeInfo(2, "Samantha", "Brown", new DateTime(1988, 2, 5), "Marketing"),
-            new EmployeeInfo(3, "Nick", "Morris", new DateTime(2000, 8, 25), "Engineering"),
-            new EmployeeInfo(4, "Julia", "Lee", new DateTime(2005, 12, 3), "HR")
-        };
+        Cols = ColumnData.Data;
+        Rows = ItemData.Load(Cols);
     }
 
-    public static IList<string> Departments { get; } = new List<string>
+    [RelayCommand]
+    private void Edit(object? row)
     {
-        "Engineering",
-        "Marketing",
-        "HR",
-        "Finance",
-        "Sales"
-    };
-}
-
-public partial class EmployeeInfo : ObservableObject
-{
-    [ObservableProperty]
-    private int id;
-
-    [ObservableProperty]
-    private string firstName;
-
-    [ObservableProperty]
-    private string lastName;
-
-    [ObservableProperty]
-    private DateTime birthDate;
-
-    [ObservableProperty]
-    private string department;
-
-    public EmployeeInfo(int id, string firstName, string lastName, DateTime birthDate, string department)
-    {
-        Id = id;
-        FirstName = firstName;
-        LastName = lastName;
-        BirthDate = birthDate;
-        Department = department;
     }
-}
 
-public enum ColumnType
-{
-    Integer,
-    String,
-    Date,
-    ComboBox
-}
+    partial void OnArtChanged(string? value) => BuildFilter();
+    partial void OnNameChanged(string? value) => BuildFilter();
+    partial void OnDescrChanged(string? value) => BuildFilter();
 
-public class ColumnDefinition
-{
-    public string FieldName { get; }
-    public string Header { get; }
-    public ColumnType ColumnType { get; }
-
-    public ColumnDefinition(string fieldName, string header, ColumnType columnType)
+    private void BuildFilter()
     {
-        FieldName = fieldName;
-        Header = header;
-        ColumnType = columnType;
+        List<string> results = [];
+        FilterString = string.Empty;
+
+        if (!string.IsNullOrEmpty(Art)) results.Add(ProcessValue(Art, nameof(Art)));
+        if (!string.IsNullOrEmpty(Name)) results.Add(ProcessValue(Name, nameof(Name)));
+        if (!string.IsNullOrEmpty(Descr)) results.Add(ProcessValue(Descr, nameof(Descr)));
+
+        FilterString = string.Join(" AND ", results.Where(t => !string.IsNullOrEmpty(t)));
+    }
+
+    internal string ProcessValue(string? value, string propName)
+    {
+        if (string.IsNullOrEmpty(value)) return string.Empty;
+
+        if (!value.Contains('%')) return $"[{propName}] = '{value}'";
+
+        var result = value.Split('%');
+        var first = 0;
+        var last = result.Length - 1;
+
+        if (!string.IsNullOrEmpty(result[first])) result[first] = $"StartsWith([{propName}],'{result[first]}')";
+        
+        if (!string.IsNullOrEmpty(result[last])) result[last] = $"EndsWith([{propName}],'{result[last]}')";
+
+        if (result.Length < 2) return string.Join(" and ", result.Where(t => !string.IsNullOrEmpty(t)));
+        
+        for (var mid = 1; mid < last; mid++)
+        {
+            if (string.IsNullOrEmpty(result[mid])) continue;
+                
+            result[mid] = $"Contains([{propName}],'{result[mid]}')";
+        }
+
+        return string.Join(" and ", result.Where(t => !string.IsNullOrEmpty(t)));
+        
+        // return value.Split('%') switch
+        // {
+        //     var arr when value.StartsWith('%') => $"EndsWith([{propName}],'{arr.Last()}')",
+        //     var arr when value.EndsWith('%') => $"StartsWith([{propName}],'{arr.First()}')",
+        //     var arr => $"StartsWith([{propName}],'{arr[0]}') and EndsWith([{propName}],'{arr[1]}')",
+        // };
     }
 }
