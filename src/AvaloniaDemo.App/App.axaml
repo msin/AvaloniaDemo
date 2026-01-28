@@ -18,9 +18,9 @@
         <local:ViewLocator />
     </Application.DataTemplates>
 
-    <!--<Application.Resources>
+    <Application.Resources>
         <CornerRadius x:Key="EditorCornerRadius">2</CornerRadius>
-    </Application.Resources>-->
+    </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
@@ -29,6 +29,11 @@
         <Style Selector="Window">
             <Setter Property="WindowStartupLocation" Value="CenterScreen" />
             <Setter Property="UseLayoutRounding" Value="True" />
+        </Style>
+        
+        <Style Selector="mxr|RibbonControl">
+            <Setter Property="Margin" Value="-10 -15 -10 0" />
+            <Setter Property="Padding" Value="0" />
         </Style>
 
         <Style Selector="mxdg|DataGridControl">
@@ -51,8 +56,8 @@
             <Setter Property="BorderThickness" Value="0" />
         </Style>
 
-        <!-- Скругление TextEditor -->
-        <!--<Style Selector="mxe|TextEditor:light /template/ Border#PART_RootBorder">
+    <!-- Скругление TextEditor -->
+        <Style Selector="mxe|TextEditor:light /template/ Border#PART_RootBorder">
             <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
         </Style>
 
@@ -66,6 +71,6 @@
 
         <Style Selector="mxr|RibbonPage mxb|ToolbarEditorItem mxe|TextEditor /template/ Border#PART_RootBorder">
             <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
-        </Style>-->
+        </Style>
     </Application.Styles>
 </Application>
