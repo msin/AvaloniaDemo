@@ -1,11 +1,12 @@
 ﻿using AvaloniaDemo.App.ViewModels;
+using AvaloniaDemo.App.Views.Filters;
 using Xunit.Abstractions;
 
 namespace AvaloniaDemo.Test;
 
 public class ProcessValueTests(ITestOutputHelper output)
 {
-    private readonly MainWindowViewModel _main = new();
+    private readonly ItemFilterViewModel _itemFilter = new();
     private readonly Action<string> _write = output.WriteLine;
 
     [Fact]
@@ -16,7 +17,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "TestProp";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value ?? "null"}' => \"{result}\"");
 
         // Assert
@@ -31,7 +32,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "TestProp";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
 
         // Assert
@@ -46,7 +47,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "Name";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
 
         // Assert
@@ -61,7 +62,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "Code";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
 
         // Assert
@@ -76,7 +77,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "Code";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
 
         // Assert
@@ -91,7 +92,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "Description";
 
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
 
         // Assert
@@ -106,7 +107,7 @@ public class ProcessValueTests(ITestOutputHelper output)
         string propName = "Field";
     
         // Act
-        string result = _main.ProcessValue(value, propName);
+        string result = _itemFilter.ProcessValue(value, propName);
         _write($"{propName} : = '{value}' => \"{result}\"");
     
         // Assert

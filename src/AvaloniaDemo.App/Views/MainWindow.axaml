@@ -1,16 +1,17 @@
-<mx:MxWindow xmlns="https://github.com/avaloniaui"
+<mx:MxWindow x:Class="AvaloniaDemo.App.Views.MainWindow"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:AvaloniaDemo.App.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
-             xmlns:views="using:AvaloniaDemo.App.Views"
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
-             xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
-             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:mxtlvis="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:views="clr-namespace:AvaloniaDemo.App.Views"
+             xmlns:visuals="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
-             x:Class="AvaloniaDemo.App.Views.MainWindow"
              x:DataType="vm:MainWindowViewModel"
              Icon="/Assets/LS12.png"
              Width="1280" Height="800" Padding="5"
@@ -20,120 +21,81 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <DockPanel>
-        <mxr:RibbonControl DockPanel.Dock="Top"
-                           ApplicationButtonGlyph="/Assets/avalonia-logo.ico"
-                           ApplicationButtonKeyTip="F"
-                           IsQuickAccessToolbarVisible="False"
-                           AllowQuickAccessToolbarCustomizationMenu="False"
-                           IsQuickAccessToolbarCustomizationButtonVisible="False"
-                           IsApplicationButtonVisible="False"
-                           CommandLayout="Classic">
-            <mxr:RibbonPage Header="Home">
-                <mxr:RibbonPageGroup Header="Item Filter" IsHeaderButtonVisible="False">
-                    <mxb:ToolbarEditorItem Header="Артикул" EditorValue="{Binding Art}">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:TextEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Название" EditorValue="{Binding Name}">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:TextEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Описание" EditorValue="{Binding Descr}">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:TextEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    
-                    <mxb:ToolbarSeparatorItem />
-                    
-                    <mxb:ToolbarEditorItem Header="Класс">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:ComboBoxEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Группа">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:ComboBoxEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Тип">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:ComboBoxEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                                        
-                    <mxb:ToolbarSeparatorItem />
-                    
-                    <mxb:ToolbarEditorItem Header="Дата 1">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:DateEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Дата 2">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:DateEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Дата 3">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:DateEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                                                            
-                    <mxb:ToolbarSeparatorItem />
-                    
-                    <mxb:ToolbarEditorItem Header="Число 1">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:SpinEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Число 2">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:SpinEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                    <mxb:ToolbarEditorItem Header="Число 3">
-                        <mxb:ToolbarEditorItem.EditorProperties>
-                            <mxe:SpinEditorProperties />
-                        </mxb:ToolbarEditorItem.EditorProperties>
-                    </mxb:ToolbarEditorItem>
-                </mxr:RibbonPageGroup>
-            </mxr:RibbonPage>
-        </mxr:RibbonControl>
+    <mx:MxWindow.Resources>
+        <views:ResizedImageSelector x:Key="NodeImageSelector" />
+    </mx:MxWindow.Resources>
 
-        <mxdg:DataGridControl ItemsSource="{Binding Rows}"
-                              ColumnsSource="{Binding Cols}"
-                              FilterString="{Binding FilterString}"
-                              FilterPanelDisplayMode="Auto"
-                              IsFilterEnabled="True">
-            <Interaction.Behaviors>
-                <EventTriggerBehavior EventName="DoubleTapped">
-                    <InvokeCommandAction Command="{Binding EditCommand}" 
-                                         CommandParameter="{Binding $parent[mxdg:DataGridControl].FocusedItem}" />
-                </EventTriggerBehavior>
-            </Interaction.Behaviors>
-            <mxdg:DataGridControl.ColumnTemplate>
-                <views:ColumnTemplate />
-            </mxdg:DataGridControl.ColumnTemplate>
-        </mxdg:DataGridControl>
+    <DockPanel>
+        <!--<Expander DockPanel.Dock="Left"
+                  ExpandDirection="Left"
+                  Header="Навигация"
+                  Margin="0" Padding="0"
+                  MinWidth="100" MaxWidth="300"
+                  VerticalContentAlignment="Stretch"
+                  VerticalAlignment="Stretch" Background="Gray">
+            <Expander.Styles>
+                <Style Selector="Expander /template/ ToggleButton">
+                    <Setter Property="IsVisible" Value="False" />
+                </Style>
+            </Expander.Styles>
+            <Expander.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel Width="100" VerticalAlignment="Top">
+                        <ToggleButton DockPanel.Dock="Top"
+                                      Height="16" Width="60"
+                                      Background="DimGray"
+                                      IsChecked="{Binding $parent[Expander].IsExpanded}" />
+
+                        <TextBlock Text="{Binding $parent[Expander].Header}"
+                                   FontWeight="DemiBold" FontSize="12"
+                                   RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <RotateTransform Angle="-90" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </Expander.HeaderTemplate>-->
+
+            <mxtl:TreeViewControl x:Name="PageSelector"
+                                  DockPanel.Dock="Left"
+                                  Width="260"
+                                  MinWidth="160"
+                                  ItemsSource="{Binding Modules}"
+                                  FocusedItem="{Binding Form}"
+                                  SelectionMode="Single"
+                                  KeyFieldName="Id"
+                                  ParentFieldName="ParentId"
+                                  DataFieldName="Name"
+                                  ShowNodeImages="True"
+                                  ShowRootIndent="True"
+                                  ShowExpandButtons="False"
+                                  RowMinHeight="32"
+                                  NodeImageSelector="{StaticResource NodeImageSelector}"
+                                  FocusedNodeChanged="OnFocusedNodeChanged">
+                <mxtl:TreeViewControl.RootValue>
+                    <system:Int32>0</system:Int32>
+                </mxtl:TreeViewControl.RootValue>
+
+                <mxtl:TreeViewControl.Styles>
+                    <Style Selector="mxtlvis|TreeListIndentControl Image">
+                        <Setter Property="MinHeight" Value="26" />
+                        <Setter Property="MinWidth" Value="26" />
+                        <Setter Property="Margin" Value="2 0" />
+                    </Style>
+
+                    <Style Selector="visuals|CellEditor#PART_CellEditor mxe|TextEditor">
+                        <Setter Property="FontWeight" Value="Medium" />
+                        <Setter Property="FontSize" Value="13" />
+                    </Style>
+
+                    <Style Selector="mxtlvis|TreeViewRowControl Border#SelectionBorder">
+                        <Setter Property="CornerRadius" Value="1" />
+                    </Style>
+                </mxtl:TreeViewControl.Styles>
+            </mxtl:TreeViewControl>
+        <!--</Expander>-->
+
+        <TransitioningContentControl Content="{Binding CurrentPage}" />
     </DockPanel>
 </mx:MxWindow>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

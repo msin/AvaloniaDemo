@@ -1,0 +1,10 @@
+{
+  "language_server": {},
+  "assistant": {
+    "system_prompt": "Ты экспертный инженер-программист. Пиши чистый, идиоматичный код {language}. Всегда добавляй тесты и error handling. Объясняй решения кратко в 1-2 предложениях.",
+    "default_params": {
+      "temperature": 0.1,
+      "max_tokens": 16384
+    }
+  }
+}

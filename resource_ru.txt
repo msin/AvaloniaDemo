@@ -1,0 +1,378 @@
+﻿Art	Арт. поставщика
+Art	Артикул
+BaseType	Вид основы
+Humidity	Влажность
+AllItems	Все поз.
+Total	Всего:
+Insert	Вставить
+Login	Вход в систему
+SelectArea	Выборите участок!
+ManyTons	Выбрано больше 3 тонов
+SelectAll	Выбрать всё / Сброс выбранного
+SelectAll	Выбрать всё Сбросить
+SelectFile	Выбрать файл
+Exit	Выйти из программы
+Dropdown	Выпадающий список
+ExecuteExport	Выполнить процедуру экспорта
+Exit	Выход
+Group	Группа
+DensityGroup	Группа пов. плотности
+BatchSetup	Групповая настройка параметров
+Contract	Д о г о в о р
+Date	Дата
+DateInvalid	Дата введена некорректно
+DateTo	Дата до
+DateModified	Дата изм.
+DateFrom	Дата от
+DatePlan	Дата план.
+DateCreated	Дата созд.
+Demka	Демка
+Charts	Диаграммы
+DateRange	Диапазон дат
+Length	Длина
+LengthGot	длина (гот.)
+LengthSur	длина (сур.)
+DifferentParams	Для выбранных изделий параметры отличаются
+To	до
+AddCustomer	Добавить нового заказчика
+AddSupplier	Добавить нового поставщика
+AddContract	Добавить новый договор
+AddOrder	Добавить новый заказ
+AddOPP	Добавить ОПО
+Doc	Документ
+DocSaved	Документ сохранен в БД
+Docs	Документы
+AdditionalFunc	Доп. функции
+Addition	Дополнение
+AdditionalParams	Дополнительные параметры
+Order	З а к а з
+OrderChik	З а к а з ч и к
+LoadDoc	Загрузить документ в систему
+LoadDocs	Загрузить список документов
+LoadProcedures	Загрузить список процедур
+Loading	Загрузка
+Order	Заказ
+OrdersCount	Заказов
+Orders	Заказы
+Stock	Запасы
+RecordsDeleted	Записи удалены
+RecordAdded	Запись добавлена
+RecordChanged	Запись изменена
+MaterialExpense	Запись расхода материалов
+RecordDeleted	Запись удалена
+FillStation	Заполните заправку станка
+FillName	Заполните имя (минимум 10 символов)
+FillKey	Заполните ключ
+FillLogin	Заполните логин
+FillName	Заполните название
+FillDescription	Заполните описание
+FillPassword	Заполните пароль
+FillPasswordShort	Заполните пароль (минимум 3 символа)
+FillUser	Заполните пользователя
+Refill	Заправка
+StationRefill	Заправка станка
+ArtExists	Значение {Art} уже существует
+CodeExists	Значение {Code} уже существует
+DsgExists	Значение {Dsg} уже существует
+NameExists	Значение {Name} уже существует
+NrExists	Значение {Nr} уже существует
+ValueOutOfRange	Значение вне диапазона
+Ident	Идент.
+ItemId	Идент. изделия
+Id	Идентификатор
+Item	Изделие
+Items	изделия
+Edit	Изменить
+EditDoc	Изменить документ
+Image	Изображение
+INN	ИНН
+ColorsUsed	Используемые цвета
+Historical	Исторические данные
+FinalLine	Итоговая строка
+LS25Client	Клиент системы LS25
+Buttons	Кнопки
+Code	Код
+CodeOutOfRange	Код параметра вне диапазона: {code}
+Qty	Кол-во
+Bobbins	Кол-во бобин
+Belts	Кол-во лент
+ThreadsQty	Кол-во нит.
+ThreadsPerItem	Кол-во нит./изд.
+ThreadsCount	Кол-во нитей
+Tubes	Кол-во ручьев
+ColorsInBase	Кол-во цветов сновки
+Collection	Коллекция
+End	Конец
+EndRange	Конец диапазона
+CalculationEnd	Конец расчета
+CopyToClipboard	Копировать в буфер
+CoreBase	Корен. основа
+ConsumptionCoefficients	Коэффициенты расхода не заданы
+Belt	Лента
+Lamels	Марка ламелей
+ItemWeight	Масса изделия
+ItemWeightColon	Масса изделия:
+FiberPercentage	Массовая доля волокон
+Material	материал
+MK	МК
+Modules	Модули
+ModulesForms	Модули и формы
+Winding	Мотальное отделение
+Name	Название
+RefillName	Название заправки
+Description	Наименование
+ParamsFound	Найдено записей параметров {itemParams.Length} шт., записей изделий {items.Length} шт.
+Invoice	Накладная поступл. Б/З
+Start	Начало
+StartRange	Начало диапазона
+CalculationStart	Начало расчета
+NoTonSelected	Не выбран ни один тон
+NotImplemented	Не реализовано!
+WrongDate	некорректная дата
+WrongValue	некорректное значение
+IncompleteData	Неполные данные!
+NoData	Нет данных
+NoDataExport	Нет данных для экспорта
+NoDataExclamation	Нет данных!
+NZP	НЗП
+BottomBase	Нижняя основа
+Bottom	Низ
+ThreadsInTube	Нитей в 1 ручье
+ThreadsInBase	Нитей в основе
+ThreadsPer10cm	Нитей на 10 см
+Thread1	Нить 1
+Thread2	Нить 2
+Thread3	Нить 3
+Thread4	Нить 4
+NewContract	Новый договор
+NewDoc	Новый документ
+NewOrder	Новый заказ
+NewCustomer	Новый заказчик
+NewSupplier	Новый поставщик
+NewPattern	Новый рисунок
+Number	Номер
+BatchNumber	Номер партии
+Normalize	Нормализовать
+NormalizeTotal	Нормализовать общую реализацию к 100%
+MainModelUpdate	Обновление основной и производственной модели данных
+SystemModelUpdate	Обновление системной модели данных
+SampleProcessing	Обработка эталонов
+General	Общие
+OverallItem	Общий вид изделия
+SelectionWindow	Окно выборки
+OperationCancelled	Операция отменена
+Description	Описание
+BaseDescription	Описание сновки
+OptimalWidth	Оптимальная ширина колонок
+DisabledGOST	откл. по ГОСТ
+DisabledStd	откл. по станд. предп.
+OpenInExcel	Открыть в Excel
+OpenFile	Открыть файл
+Reports	Отчеты
+Error	Ошибка
+InputError	Ошибка ввода!
+ProcedureError	Ошибка выполнения процедуры
+AddError	Ошибка добавления
+AddRecordError	Ошибка добавления записи
+DBError	Ошибка записи БД
+QueryError	Ошибка запроса
+ChangeError	Ошибка изменения
+CloneError	Ошибка клонирования записи БД
+GetDataError	Ошибка получения данных
+EditRowError	Ошибка редактирования строки
+SysCallError	Ошибка системного вызова
+DeleteRecordError	Ошибка удаления записи
+ReadDBError	Ошибка чтения БД
+ReadFileError	Ошибка чтения файла!
+ExportError	Ошибка экспорта!
+Position	П о з и ц и и  з а к а з а
+Supplier	П о с т а в щ и к
+TPXPantone	Пантон TPX
+Parameters	Параметры
+ItemParameters	Параметры изделий
+ParamsNotSame	Параметры не одинаковые
+ExportParams	Параметры экспорта
+Password	Пароль
+TwistThreads	Перевив. нити
+TogglePositions	Переключение Все позиции / Активные позиции
+PetBase	Петер. основа
+PZ	ПЗ
+Wait	Подождите...
+ConfirmDelete	Подтвердите удаление выбраной записи
+Positions	Позиции
+PositionsCount	Позиций
+Position	Позиция
+OrderPosition	Позиция заказа
+ShowHideHeaders	Показать / Скрыть заголовки колонок
+ShowPositions	Показать список позиций
+FullCopy	Полная копия {entityTypeName}
+FullCalc	Полный расчет
+User	Пользователь
+Attributes	Признаки
+Note	Примечание
+Notes	Примечания
+Priority	Приоритет
+Sales	Продажи
+ProductionTasks	Производственные задания
+ErrorOccurred	Произошла ошибка
+View	Просмотр
+ViewDoc	Просмотр документа
+ViewExport	Просмотр и экспорт документов
+Other	Прочее
+Others	Прочие
+Yarn	Пряжа
+YarnUps	Пряжа уток:
+YarnColon	Пряжа: {Id}
+WorkMode	Р е ж и м   р а б о т ы
+Worker	Работник
+Workplace	Рабочее место
+FinishedSize	Размер готового изделия
+RawSize	Размер сурового изделия
+Calculate	Рассчитать
+StretchColumns	Растянуть колонки на весь грид
+Color	Расцветка
+Colors	Расцветки
+ColorsRow	Расцветки {Row.Art}
+CalculationDone	Расчет завершен
+DensityCalc	Расчет плотности
+YarnCalc	Расчет пряжи
+YarnConsumptionAll	Расчет расхода пряжи для всех эталонов в гриде
+YarnConsumptionSelected	Расчет расхода пряжи для выбранного эталона
+AvgDensity	Расчет средневзвешенной плотности нитей на 10 см ткани
+Region	Регион
+DataMode	Режим выборки данных по поступлению или отгрузке
+WorkMode	Режим работы
+SamplesResult	Результат обработки эталонов
+CalculationResult	Результат расчета
+Patterns	Рисунки
+PatternsItem	Рисунки {item.Art}
+Roles	Роли
+RussTPX	русс. TPX
+WindowShift	Сдвиг окна
+Seasonality	Сезонность
+Server	Сервер
+Middle	Середина
+ThreadSystem	Система нитей
+SysCallDone	Системный вызов завершен
+Warehouse	Склад
+Warehouses	Склады
+Copied	Скопировано в буфер:
+Copy	Скопировать
+ExportFirst	Сначала нужно экспортировать данные в файл\n
+Base	Сновка
+Content	Содержание
+SampleColors	Создание цветовых экземпляров по эталонам
+Create	Создать
+CreateDoc	Создать новый документ
+FullCopyConfirm	Создать полную копию {entityTypeName} '{entityName}'?
+CreateWarehouse	Создать склад
+CreateArea	Создать участок
+Composition	Состав
+Save	Сохранить
+SaveTableSettings	Сохранить настройки всех таблиц
+SaveTableSetting	Сохранить настройку таблицы
+DocList	Список документов
+GeneralOps	Список обобщенных операций
+ParamsIncomplete	Список параметров неполный
+ExportProcedures	Список процедур экспорта
+RefillCatalog	Справочник заправок
+WindAndUnwind	Ставить и сновать
+StandardMK	Стандартная МК!
+Status	Статуc
+Status	Статус
+StockStatus	Статус запасов
+Scenarios	Сценарии
+TableData	Табличные данные
+TableOPO	Табличный вид ОПО
+YarnColorExists	Такая пряжа и окраска уже есть
+TypeExists	Такие тип и название уже есть
+ValueExists	Такое значение '{Val}' уже есть
+ValueExistsSimple	Такое значение уже есть
+Tex	Текс
+Type	Тип
+RecordTypeMismatch	Тип записи не соотвествует анкете
+RecordTypeMismatch2	Тип записи не соответствует анкете
+DyeType	Тип крашения
+BaseYarn	Тип сновки и пряжа
+MachineType	Тип станка
+Ton	Тон
+DeleteDoc	Удаление документа
+DeleteRecord	Удаление записи
+DeleteRecordDB	Удаление записи из БД
+DeleteMaterial	Удаление материала
+DeleteMK	Удаление МК
+DeleteOperation	Удаление операции
+DeleteStage	Удаление этапа
+DeleteStageImpossible	Удаление этапа невозможно
+Delete	Удалить
+DeleteDoc	Удалить документ
+DeleteTableSettings	Удалить настройки всех таблиц
+DeleteTableSetting	Удалить настройку таблицы
+DeleteOPP	Удалить ОПО
+SpecifyARM	Укажите АРМ
+SpecifyCustomerGroup	Укажите группу заказчика
+SpecifySupplierGroup	Укажите группу поставщика
+SpecifyValue	Укажите значение
+SpecifyCustomerINN	Укажите ИНН заказчика
+SpecifySupplierINN	Укажите ИНН поставщика
+SpecifyKey	Укажите ключ
+SpecifyCatalogKey	Укажите ключ католога
+SpecifyCustomerCode	Укажите код заказчика
+SpecifySupplierCode	Укажите код поставщика
+SpecifyEndRange	Укажите конец диапазона плановой даты позиции
+SpecifyValidUsage	Укажите корректную реализацию
+SpecifyMask	Укажите маску
+SpecifyName	Укажите название
+SpecifyCustomerName	Укажите название заказчика
+SpecifySupplierName	Укажите название поставщика
+SpecifyStageName	Укажите название этапа
+SpecifyStartDate	Укажите начало диапазона плановой даты позиции
+SpecifyNumber	Укажите номер
+SpecifyContractName	Укажите номер или название договора
+SpecifyOrderName	Укажите номер или название заказа
+SpecifyTonNumber	Укажите номер тона
+SpecifyField	Укажите поле
+SpecifyYarn	Укажите пряжу
+SpecifyColor	Укажите расцветку
+SpecifyCustomerRegion	Укажите регион заказчика
+SpecifySupplierRegion	Укажите регион поставщика
+SpecifyContractStatus	Укажите статус договора
+SpecifyOrderStatus	Укажите статус заказа
+SpecifyCustomerStatus	Укажите статус заказчика
+SpecifyPositionStatus	Укажите статус позиции
+SpecifySupplierStatus	Укажите статус поставщика
+SpecifyTable	Укажите таблицу
+SpecifyType	Укажите тип
+SpecifyContractType	Укажите тип договора
+SpecifyOrderType	Укажите тип заказа
+SpecifyDyeType	Укажите тип окраски
+SpecifyArea	Укажите участок
+SpecifyLanguage	Укажите язык
+Controls	Управляющие
+Treatment	Уработка
+ThreadBaseTreatment	Уработка нитей в основах
+ThreadWarpTreatment	Уработка нитей в утке
+ServiceLevel	Уровень сервиса
+Utilities	Утилиты
+Ups	Уток
+Areas	Участки
+Area	Участок
+FileNotFound	Файл не найден!
+Formula	Формула
+Color	Цвет
+ColorB	Цвет B
+ColorG	Цвет G
+ColorR	Цвет R
+TonColors	Цвета тонов
+Integer	Целое
+FabricPart	Часть ткани
+WidthGot	ширина (гот.)
+WidthSur	ширина (сур.)
+BeltWidth	Ширина лент на сновальном барабане
+WidthCm	Ширина, см
+Export	Экспорт
+ExportExcelTemplate	Экспорт данных в Excel по шаблону
+ExportFinished	Экспорт завершен, создан файл:
+ExportTable	Экспорт таблицы в XLSX
+SampleItem	Эталон изделия: {Id}
+Samples	Эталоны

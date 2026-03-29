@@ -4,12 +4,15 @@
              x:Class="AvaloniaDemo.App.App"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:local="using:AvaloniaDemo.App"
-             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
+             xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:visuals="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:visuals1="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
              RequestedThemeVariant="Light">
-    <!--
+<!--
      "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. 
     https://github.com/Eremex/controlthemes/blob/main/Source/Eremex.Avalonia.Themes.DeltaDesign/Controls/Editors/EditorsCommonStyles.axaml
 -->
@@ -20,19 +23,87 @@
 
     <Application.Resources>
         <CornerRadius x:Key="EditorCornerRadius">2</CornerRadius>
+        <CornerRadius x:Key="PopupCornerRadius">2</CornerRadius>
+
+        <!--Selector="^:focusedState-->
+        <!--<SolidColorBrush x:Key="Fill/Neutral/Secondary/Enable" Color="Red"/>-->
+        <!--Selector="^:focusedAndSelectedState-->
+        <SolidColorBrush x:Key="Fill/Accent/Highlighting/Item/Hover" Color="#FFC9E0E0" />
+        <!--Selector="^:selectedState-->
+        <SolidColorBrush x:Key="Fill/Accent/Highlighting/Item/Enabled" Color="#FFC9E0E0" />
+        <!--Selector="^:pointerover-->
+        <SolidColorBrush x:Key="Fill/Neutral/Secondary/Hover" Color="#FFD0D0D0" />
+
+        <SolidColorBrush x:Key="Outline/Accent/Focus" Color="LightSteelBlue" />
+
+        <ControlTheme x:Key="{x:Type mxtlv:TreeViewRowControl}" TargetType="mxtlv:TreeViewRowControl">
+            <Setter Property="Padding" Value="0,1" />
+            <Setter Property="Foreground" Value="{DynamicResource Text/Neutral/Primary}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid Background="Transparent">
+                        <Grid Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <Border Name="SelectionBorder" CornerRadius="1" />
+                            <visuals:CellsPanel x:Name="PART_CellsPanel" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:focusedState /template/ Border#SelectionBorder">
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Background" Value="{DynamicResource	Fill/Neutral/Secondary/Enabled}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Outline/Accent/Focus}" />
+            </Style>
+
+            <Style Selector="^:focusedAndSelectedState /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Accent/Highlighting/Item/Hover}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Outline/Accent/Focus}" />
+            </Style>
+
+            <Style Selector="^:selectedState /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Accent/Highlighting/Item/Enabled}" />
+            </Style>
+
+            <Style Selector="^:editingState /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Secondary/Enabled}" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Secondary/Hover}" />
+            </Style>
+
+            <Style Selector="^:pointerover:focusedAndSelectedState:not(:editingState) /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Accent/Highlighting/Item/Hover}" />
+            </Style>
+
+            <Style Selector="^:pointerover:selectedState /template/ Border#SelectionBorder">
+                <Setter Property="Background" Value="{DynamicResource Fill/Accent/Highlighting/Item/Hover}" />
+            </Style>
+
+            <Style Selector="^[(mxtl|TreeViewControl.IsFocusWithin)=false] /template/ Border#SelectionBorder">
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+        </ControlTheme>
     </Application.Resources>
 
     <Application.Styles>
-        <!--<FluentTheme />-->
+        <FluentTheme />
         <theme:DeltaDesignTheme />
 
         <Style Selector="Window">
             <Setter Property="WindowStartupLocation" Value="CenterScreen" />
             <Setter Property="UseLayoutRounding" Value="True" />
         </Style>
-        
+
+        <Style Selector="UserControl">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
         <Style Selector="mxr|RibbonControl">
-            <Setter Property="Margin" Value="-10 -15 -10 0" />
+            <Setter Property="Margin" Value="-8 -12 -8 0" />
             <Setter Property="Padding" Value="0" />
         </Style>
 
@@ -56,8 +127,60 @@
             <Setter Property="BorderThickness" Value="0" />
         </Style>
 
-        <Style Selector="mxe|TextEditor:activeMode, mxe|ComboBoxEditor:activeMode, mxe|SpinEditor:activeMode, mxe|DateEditor:activeMode, mxe|CheckEditor:activeMode">
+        <Style
+            Selector="mxe|TextEditor:activeMode, mxe|ComboBoxEditor:activeMode, mxe|SpinEditor:activeMode, mxe|DateEditor:activeMode, mxe|CheckEditor:activeMode">
             <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
         </Style>
+
+        <Style Selector="mxe|ComboBoxEditor:activeMode Border#PopupBorder">
+            <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        </Style>
+
+        <Style Selector="mxe|DateEditor:activeMode Border#PopupBorder">
+            <Setter Property="CornerRadius" Value="{StaticResource PopupCornerRadius}" />
+        </Style>
+
+        <Style Selector="mxe|CalendarControl Border">
+            <Setter Property="CornerRadius" Value="{StaticResource PopupCornerRadius}" />
+        </Style>
+
+        <Style Selector="CalendarItem:activeMode /template/ Border#PART_HeaderDecorationBorder">
+            <Setter Property="CornerRadius" Value="{DynamicResource EditorCornerRadius}" />
+        </Style>
+
+        <Style Selector="Calendar Border#PART_HeaderDecorationBorder">
+            <Setter Property="CornerRadius" Value="{DynamicResource PopupCornerRadius}" />
+        </Style>
+
+        <Style Selector="visuals1|PopupContentContainer Border#PART_PopupHeaderContainer">
+            <Setter Property="CornerRadius" Value="{DynamicResource PopupCornerRadius}" />
+        </Style>
+
+        <Style Selector="visuals1|PopupContentContainer Border#PART_PopupFooterContainer">
+            <Setter Property="CornerRadius" Value="{DynamicResource PopupCornerRadius}" />
+        </Style>
+        
+        <Style Selector="visuals1|PopupContentContainer Border#PopupBorder">
+            <Setter Property="CornerRadius" Value="{DynamicResource PopupCornerRadius}" />
+        </Style>
+
+        <Style Selector="Button">
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+
+        <Style Selector="Button:pointerover /template/ Border#PART_BackgroundBorder">
+            <Setter Property="Background" Value="#FFD0E4FE" />
+        </Style>
+        <Style Selector="Button:focus /template/ Border#PART_BackgroundBorder">
+            <Setter Property="Background" Value="#FFD0E4FE" />
+        </Style>
+
+        <Style Selector="Button:pressed /template/ Border#PART_BackgroundBorder">
+            <Setter Property="Background" Value="LightSteelBlue" />
+        </Style>
+        <!--<Style Selector="Button /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackgroundPressed}" />
+            <Setter Property="Opacity" Value="0.8" />
+        </Style>-->
     </Application.Styles>
 </Application>

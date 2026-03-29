@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Frozen;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Frozen;
 using Avalonia.Platform;
 using AvaloniaDemo.CIL.Common;
 
@@ -18,34 +14,38 @@ public class TCatalog
 public static class CatalogData
 {
     public static FrozenDictionary<string, KeyVal[]> Data { get; } = Load();
-    
+
+    public static KeyVal[]? ItemClasses => Data.GetValueOrDefault("ITEM_CLASS");
+
+    public static KeyVal[]? ItemGroups => Data.GetValueOrDefault("ITEM_GROUP");
+
+    public static KeyVal[]? ItemTypes => Data.GetValueOrDefault("ITEM_TYPE");
+
     private static FrozenDictionary<string, KeyVal[]> Load()
     {
         TCatalog[] result = [];
         try
         {
-            // Используем AssetLoader для доступа к ZIP архиву
             var uri = new Uri("avares://AvaloniaDemo.App/Assets/catalog.zip");
 
-            using (var zipStream = AssetLoader.Open(uri))
-            using (var archive = new System.IO.Compression.ZipArchive(zipStream, System.IO.Compression.ZipArchiveMode.Read))
+            using var zipStream = AssetLoader.Open(uri);
+            using var archive = new System.IO.Compression.ZipArchive(zipStream, System.IO.Compression.ZipArchiveMode.Read);
+            // Ищем файл items.csv в архиве
+            var csvEntry = archive.Entries.FirstOrDefault(e => e.Name == "catalog.txt");
+
+            if (csvEntry != null)
             {
-                // Ищем файл items.csv в архиве
-                var csvEntry = archive.Entries.FirstOrDefault(e => e.Name == "catalog.txt");
+                using var entryStream = csvEntry.Open();
+                using var reader = new StreamReader(entryStream, System.Text.Encoding.GetEncoding(1251));
+                var items = ParseTxtData(reader);
+                result = items;
 
-                if (csvEntry != null)
-                {
-                    using var entryStream = csvEntry.Open();
-                    using var reader = new StreamReader(entryStream, System.Text.Encoding.GetEncoding(1251));
-                    var items = ParseTxtData(reader);
-                    result = items;
+                System.Diagnostics.Debug.WriteLine($"✓ Загружено {items.Length} товаров из TXT");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"✗ Файл items.csv не найден в архиве");
 
-                    System.Diagnostics.Debug.WriteLine($"✓ Загружено {items.Length} товаров из TXT");
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine($"✗ Файл items.csv не найден в архиве");
-                }
             }
         }
         catch (Exception ex)
@@ -56,7 +56,7 @@ public static class CatalogData
         return result
             .ToLookup(t => t.Key)
             .ToFrozenDictionary(
-                t => t.Key, 
+                t => t.Key,
                 t => t.Select(x => new KeyVal(x.Val, x.Name)).ToArray());
     }
 

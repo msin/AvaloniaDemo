@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:views="using:AvaloniaDemo.App.Views"
+             xmlns:filters="using:AvaloniaDemo.App.Views.Filters"
+             xmlns:i="using:Avalonia.Xaml.Interactivity"
+             xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
+             xmlns:vm="using:AvaloniaDemo.App.ViewModels"
+             x:DataType="vm:ItemViewModel"
+             x:Class="AvaloniaDemo.App.Views.ItemView">
+
+    <DockPanel>
+        <filters:ItemFilterView DockPanel.Dock="Top" 
+                                DataContext="{Binding ItemFilterVM}" />
+
+        <mxdg:DataGridControl
+            ItemsSource="{Binding Rows}"
+            ColumnsSource="{Binding Cols}"
+            FilterString="{Binding ItemFilterString}"
+            FilterPanelDisplayMode="Auto"
+            IsFilterEnabled="True">
+            <i:Interaction.Behaviors>
+                <ia:EventTriggerBehavior EventName="DoubleTapped">
+                    <ia:InvokeCommandAction
+                        Command="{Binding EditCommand}"
+                        CommandParameter="{Binding $parent[mxdg:DataGridControl].FocusedItem}" />
+                </ia:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+            <mxdg:DataGridControl.ColumnTemplate>
+                <views:ColumnTemplate />
+            </mxdg:DataGridControl.ColumnTemplate>
+        </mxdg:DataGridControl>
+    </DockPanel>
+</UserControl>

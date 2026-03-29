@@ -1,0 +1,9 @@
+'Колонка 1b'	'PlanDate','PlanQty'
+'Колонка 1a'	'Art','Name','Descr'
+---
+'Колонка 2a'	'StatKey','IsActive'
+'Колонка 2b'	'ModeKey | GroupKey','TypeKey | ClassKey'
+'Колонка 2c'	'ModeKey | GroupKey','TypeKey | ClassKey'
+---
+'Колонка 3a'	'Art','Name','Descr'
+'Колонка 3b'	'PlanDate','PlanQty'

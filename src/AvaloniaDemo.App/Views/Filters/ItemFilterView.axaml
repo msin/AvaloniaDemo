@@ -1,0 +1,97 @@
+<controls:UserControl x:Class="AvaloniaDemo.App.Views.Filters.ItemFilterView"
+                      xmlns:controls="https://github.com/avaloniaui"
+                      xmlns="https://github.com/avaloniaui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
+                      xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+                      xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+                      xmlns:entities="clr-namespace:AvaloniaDemo.App.ViewModels.Entities"
+                      xmlns:local="using:AvaloniaDemo.App.Views.Filters"
+                      x:DataType="local:ItemFilterViewModel">
+
+    <mxr:RibbonControl ApplicationButtonGlyph="/Assets/avalonia-logo.ico"
+                       ApplicationButtonKeyTip="F"
+                       IsQuickAccessToolbarVisible="False"
+                       AllowQuickAccessToolbarCustomizationMenu="False"
+                       IsQuickAccessToolbarCustomizationButtonVisible="False"
+                       IsApplicationButtonVisible="False"
+                       CommandLayout="Classic">
+
+        <mxr:RibbonPage Header="Home">
+            <mxr:RibbonPageGroup Header="Item Filter" IsHeaderButtonVisible="False">
+                <mxb:ToolbarEditorItem Header="Артикул" EditorValue="{Binding Art, Mode=TwoWay}">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:TextEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Название" EditorValue="{Binding Name, Mode=TwoWay}">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:TextEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Описание" EditorValue="{Binding Descr, Mode=TwoWay}">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:TextEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+
+                <mxb:ToolbarSeparatorItem />
+
+                <mxb:ToolbarEditorItem Header="Класс">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:ComboBoxEditorProperties ItemsSource="{x:Static entities:CatalogData.ItemClasses}"
+                                                      ValueMember="Id" DisplayMember="Name" />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Группа">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:ComboBoxEditorProperties ItemsSource="{x:Static entities:CatalogData.ItemGroups}"
+                                                      ValueMember="Id" DisplayMember="Name" />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Тип">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:ComboBoxEditorProperties ItemsSource="{x:Static entities:CatalogData.ItemTypes}"
+                                                      ValueMember="Id" DisplayMember="Name" />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+
+                <mxb:ToolbarSeparatorItem />
+
+                <mxb:ToolbarEditorItem Header="Дата 1">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:DateEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Дата 2">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:DateEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Дата 3">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:DateEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+
+                <mxb:ToolbarSeparatorItem />
+
+                <mxb:ToolbarEditorItem Header="Число 1">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:SpinEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Число 2">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:SpinEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+                <mxb:ToolbarEditorItem Header="Число 3">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:SpinEditorProperties />
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+            </mxr:RibbonPageGroup>
+        </mxr:RibbonPage>
+    </mxr:RibbonControl>
+</controls:UserControl>
